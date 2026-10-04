@@ -1,0 +1,16 @@
+[Unit]
+Description=TvTimer - scheduled Sony Bravia TV power-off
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=notify
+WorkingDirectory=/opt/tvtimer
+ExecStart=/opt/tvtimer/TvTimer
+Restart=on-failure
+RestartSec=10
+User=tvtimer
+Environment=DOTNET_ENVIRONMENT=Production
+
+[Install]
+WantedBy=multi-user.target
